@@ -1,0 +1,9 @@
+import React from "react";
+export default function Dashboard() {
+  return (
+    <div>
+      <h1>POS Dashboard</h1>
+      {/* Add smart charts, summaries, stats here */}
+    </div>
+  );
+}
