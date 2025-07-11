@@ -1,0 +1,37 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+function loginUser(email, password) {
+  // Replace with real API call to /api/auth
+  if (email === "admin@pos.com" && password === "admin") {
+    localStorage.setItem("token", "dummy");
+    return { success: true };
+  }
+  return { success: false };
+}
+
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = loginUser(email, password);
+    if (res.success) navigate("/");
+    else setError("Invalid credentials");
+  };
+
+  return (
+    <div className="login-container">
+      <form onSubmit={handleSubmit}>
+        <h2>POS Login</h2>
+        <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" required />
+        <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required />
+        <button type="submit">Login</button>
+        {error && <p className="error">{error}</p>}
+      </form>
+    </div>
+  );
+}

@@ -1,0 +1,26 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Sales from "./pages/Sales";
+import Inventory from "./pages/Inventory";
+import Users from "./pages/Users";
+import PrivateRoute from "./components/PrivateRoute";
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/users" element={<Users />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;

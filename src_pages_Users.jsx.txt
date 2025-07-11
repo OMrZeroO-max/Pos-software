@@ -1,0 +1,9 @@
+import React from "react";
+export default function Users() {
+  return (
+    <div>
+      <h1>User Management</h1>
+      {/* Add/edit/remove users, set roles and permissions */}
+    </div>
+  );
+}
